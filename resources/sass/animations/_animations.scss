@@ -1,0 +1,10 @@
+.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.4s ease-in-out;
+}
+
+.bi-arrow-left-short {
+    transition: transform 0.4s ease-in-out;
+}
+
+@import 'arrow';

@@ -1,0 +1,73 @@
+@mixin loadPosition {
+    top: calc(50% - 40px);
+    left: calc(50% - 40px);
+    position: absolute;
+}
+
+.lds-container {
+    z-index: 2;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+}
+
+@mixin loading-circle($large, $small, $color) {
+    margin: auto;
+    display: inline-block;
+    width: $large;
+    height: $large;
+    position: relative;
+
+    div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: $small;
+        height: $small;
+        border: 8px solid $color;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: $color transparent transparent transparent;
+
+        &:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+        &:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+        &:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+    }
+}
+
+.btn-success, .btn-secondary, .btn-danger {
+    .lds-button {
+        @include loading-circle(19px, 15px, white);
+    }
+}
+
+.lds-button {
+    @include loading-circle(19px, 15px, #069c63);
+}
+
+.lds-ring {
+    @include loading-circle(80px, 64px, #069c63);
+
+    &.large {
+        @include loadPosition;
+    }
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

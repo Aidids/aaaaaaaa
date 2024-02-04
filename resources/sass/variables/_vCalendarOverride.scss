@@ -1,0 +1,24 @@
+.vc-header {
+    margin-top: 0!important;
+}
+.vc-container {
+    padding-top: 1rem;
+}
+.vc-weeks {
+    //margin-top: 2rem;
+    div {
+        margin: 0.25rem 0;
+    }
+}
+.vc-title, .vc-weeks {
+    color: $text-secondary!important;
+}
+.vc-container .vc-weekday-1, .vc-container .vc-weekday-7 {
+    color: #dc3545;
+}
+
+.vc-header .vc-title, .vc-header .vc-prev, .vc-header .vc-next,
+.vc-header .vc-arrow {
+    background-color: transparent!important;
+}
+

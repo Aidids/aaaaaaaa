@@ -1,0 +1,21 @@
+@layer bootstrap, primevue, author;
+// Bootstrap
+@layer bootstrap {
+  @import 'bootstrap/scss/bootstrap';
+}
+
+@layer author{
+// Variables
+  @import 'variables/variables';
+
+  // Animations
+  @import 'animations/animations';
+
+  // Components
+  @import 'components/components';
+}
+
+
+
+
+

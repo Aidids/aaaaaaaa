@@ -1,0 +1,218 @@
+@mixin sideBarFonts() {
+    color: rgb(125,125,125);
+    letter-spacing: 0.025rem;
+    font-weight: 600;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: start;
+    text-decoration: none;
+
+    p {
+        font-size: 1rem;
+        font-weight: bold;
+        line-height: 1.1rem;
+        color: $color-primary;
+        letter-spacing: 0.1rem;
+    }
+}
+
+#sideBar {
+    min-width: 12rem;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    border-right: 1px solid $color-border;
+    @include std-shadow;
+
+    #sideButton {
+        top: 1.25rem;
+        right: -0.9rem;
+        padding: 0 0.3rem;
+        border-radius: 50%;
+        position: absolute;
+        background-color: white;
+        border: 1px solid $color-border;
+        @include std-shadow;
+
+        i {
+            display: inline-block;
+            color: $color-primary;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: $color-primary;
+
+            i {
+                color: white;
+            }
+        }
+    }
+
+    li {
+        .nav-link {
+            display: flex;
+            padding: 0.5rem 0;
+            align-items: center;
+            border-radius: unset;
+            @include sideBarFonts;
+
+            i {
+                font-size: 1.5rem;
+                margin-left: 1.1rem;
+                margin-right: 0.5rem;
+            }
+
+            &.active, &:hover {
+                color: white;
+                background-color: $color-primary;
+            }
+
+        }
+
+        .dropdown-menu {
+            padding: 0;
+            width: max-content;
+            @include std-shadow;
+
+            li {
+                border-bottom: 1px solid $color-border;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                a {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    font-weight: 600;
+                    padding: 0.5rem 1rem;
+                    text-decoration: none;
+                    color: $color-primary;
+
+                    i {
+                        margin-right: 0.25rem;
+                    }
+                }
+
+                &:hover {
+                    background-color: $color-primary;
+
+                    a {
+                        color: white;
+                    }
+
+                }
+            }
+        }
+    }
+
+    .log-out {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        justify-content: start;
+        text-decoration: none;
+        @include sideBarFonts;
+
+        i {
+            font-size: 1.5rem;
+            margin-left: 1.1rem;
+            margin-right: 0.5rem;
+        }
+
+        &:hover {
+            font-weight: bold;
+            color: $color-primary;
+        }
+    }
+
+
+}
+
+.main-body {
+    width: 100%;
+    background-color: $color-body;
+
+    .nav-bar {
+        width: 100%;
+        display: flex;
+        height: 4.2rem;
+        padding: 0 1.7rem 0 0.85rem;
+        align-items: center;
+        background-color: white;
+        @include std-shadow;
+    }
+
+    .main-window {
+        padding: 1.5rem 1.3rem;
+        overflow-y: auto;
+        height: calc(100vh - 4.2rem);
+        @media print {
+            .badge {
+                border: 1px solid black;
+            }
+            overflow-y: unset;
+            padding: 0;
+            height: 100%;
+        }
+    }
+}
+
+.icon-badge {
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    i {
+        color: $color-primary;
+        font-size: 2.25rem;
+    }
+
+    .text {
+        margin-left: 0.5rem;
+        font-size: 0.75rem;
+        color: $text-secondary;
+    }
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-areas:
+    'profile notification'
+    'leave notification';
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    @media screen and (max-width: $tablet-width) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.grid-profile {
+    grid-area: profile;
+}
+
+.grid-notification {
+    grid-area: notification;
+    .card {
+        width: 30rem;
+        height: 40rem;
+        @media screen and (max-width: $tablet-width) {
+            height: 20rem;
+            width: 100%;
+        }
+    }
+}
+
+.grid-leave {
+    grid-area: leave;
+}
+

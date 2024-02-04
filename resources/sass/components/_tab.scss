@@ -1,0 +1,67 @@
+.custom-tab.p-tabview, .eform-tab.p-tabview {
+    .p-tabview-panels {
+        display:flex;
+        //min-height: 425px;
+        border-width: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        .p-tabview-panel {
+            width: 100%;
+        }
+    }
+
+    .p-tabview-nav li .p-tabview-nav-link {
+        color: $color-primary;
+        background: white;
+        border-radius: 5px 5px 0 0;
+        border-bottom-width: 2px;
+        padding: 10px 10px 10px 10px;
+        @include std-shadow;
+    }
+
+    .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+        outline: none;
+        box-shadow: inset 0 0 0 0 $color-primary;
+    }
+
+    .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
+        background: $body-bg;
+        border-color: $color-border;
+        color: $color-primary;
+    }
+
+    .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+        background: $color-primary;
+        border-color: $color-primary;
+        color: $color-body;
+    }
+
+    .custom-tab-label {
+        display: none; /* Hidden by default */
+
+        &.active {
+            display: inline; /* Display when active */
+
+            @media (max-width: $mobile-width) {
+                display: none; /* Hide on screens smaller than or equal to 768px (adjust this value as needed) */
+            }
+        }
+    }
+}
+
+.custom-tab.p-tabview {
+    .p-tabview-panels {
+        border-top-right-radius: 5px;
+        @include std-shadow;
+    }
+}
+
+// Define styles specific to .eform-tab
+.eform-tab.p-tabview {
+    .p-tabview-panels {
+        background: $color-body;
+        border-width: 0;
+        border-top-width: 2px;
+    }
+}

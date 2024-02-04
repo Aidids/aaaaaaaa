@@ -1,0 +1,527 @@
+@import 'loader', 'dashboard', 'approval_process', 'tab', 'stepper', 'donut';
+
+@mixin mobile-div {
+    @media screen and (max-width: $tablet-width) {
+        width: 100%;
+    }
+}
+
+@mixin button {
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 0.25rem 0.75rem;
+    letter-spacing: 0.025rem;
+}
+
+@mixin responsive-div {
+    flex: 0 0 auto;
+    @include std-spacing;
+    @include mobile-div;
+}
+
+.login-container {
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.hover-bold:hover {
+    font-weight: 700;
+}
+
+.three-quarter-div {
+    width: 58.33333333%;
+    @include responsive-div;
+}
+
+.one-quarter-div {
+    width: 41.66666667%;
+    @include responsive-div;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 50px;
+    margin: 1rem 0;
+
+    &.custom-card {
+        background-color: white;
+        padding: 1rem;
+        border: 1px solid $color-border;
+        margin: 0;
+        p {
+            width: 10rem;
+        }
+    }
+
+    .profile-info {
+        display: flex;
+        align-items: end;
+        font-size: 0.85rem;
+        line-height: 1rem;
+        flex-direction: column;
+    }
+
+    img {
+        height: 3rem;
+        margin-left: 0.5rem;
+    }
+}
+
+// buttons
+.button {
+    border: 1px solid $color-primary;
+    background-color: $color-primary;
+    color: white;
+    @include button;
+
+    &:hover {
+        @include std-shadow;
+    }
+}
+
+.button-dashboard {
+    @include button;
+    font-size: 0.85rem;
+    border: 1px solid $color-primary;
+    color: $color-primary;
+    margin-bottom: 0.4rem;
+
+    &:hover {
+        color: white;
+        background-color: $color-primary;
+        @include std-shadow;
+    }
+}
+
+.button-outline {
+    border: 1px solid $color-border;
+    background-color: white;
+    color: $color-primary;
+    @include button;
+
+    &:hover {
+        @include std-shadow;
+    }
+}
+
+// end of buttons
+.card-policy {
+    padding: 1rem;
+    background-color: #FFFDD0;
+    border-color: #FFFDD0;
+    @include std-shadow;
+}
+
+@mixin notes($color, $pin-color) {
+    padding: 1rem;
+    background-color: $color;
+    border-color: $color;
+    margin: 1rem;
+    width: 350px;
+    cursor: pointer;
+    @include std-shadow;
+    //pin css
+    div {
+        text-align: center;
+        margin-bottom: 1rem;
+
+        span {
+            padding: 0.1rem 0.75rem;
+            margin: 0 auto;
+            border-radius: 50%;
+            background-color: $pin-color;
+            border: 1px solid darken($pin-color, 25%);
+            box-shadow: 0 10px 1.1rem #001000;
+        }
+    }
+}
+
+.frame {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ddc;
+    border: solid 5vmin #eee;
+    border-bottom-color: #fff;
+    border-left-color: #eee;
+    border-radius: 2px;
+    border-right-color: #eee;
+    border-top-color: #ddd;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .25) inset, 0 5px 10px 5px rgba(0, 0, 0, .25);
+    box-sizing: border-box;
+    padding: 1rem;
+    position: relative;
+    margin-bottom: 2rem;
+
+    &:before {
+        border-radius: 2px;
+        bottom: -2vmin;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25) inset;
+        content: "";
+        left: -2vmin;
+        position: absolute;
+        right: -2vmin;
+        top: -2vmin;
+    }
+
+    &:after {
+        border-radius: 2px;
+        bottom: -2.5vmin;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25);
+        content: "";
+        left: -2.5vmin;
+        position: absolute;
+        right: -2.5vmin;
+        top: -2.5vmin;
+    }
+
+    .notes.green-yellow-pin {
+        @include notes(rgb(214, 253, 208), yellow);
+    }
+
+    .notes.yellow-red-pin {
+        @include notes(#FFFDD0, red);
+    }
+
+    .notes.yellow-yellow-pin {
+        @include notes(#FFFDD0, yellow);
+    }
+
+    .notes.blue-red-pin {
+        @include notes(rgb(212, 249, 249), red);
+    }
+
+    .notes.blue-blue-pin {
+        @include notes(rgb(212, 249, 249), blue);
+    }
+
+    .notes.pink-red-pin {
+        @include notes(rgb(241, 206, 206), red);
+    }
+
+    .notes.pink-yellow-pin {
+        @include notes(rgb(241, 206, 206), yellow);
+    }
+
+    .notes.white-blue-pin {
+        @include notes(white, blue);
+    }
+
+    .notes.white-red-pin {
+        @include notes(white, red);
+    }
+}
+
+// tables
+
+table {
+    border-radius: 5px;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: $color-border;
+    overflow: hidden;
+}
+
+.table-main {
+    thead tr th {
+        padding: 0.5rem;
+        color: white;
+        background-color: #2E8B57;
+    }
+
+    tbody tr td {
+        padding: 0.75rem 0.5rem;
+        vertical-align: middle;
+        height: 100%;
+    }
+
+    &.sticky {
+        tbody tr td {
+            color: $text-secondary;
+            padding: 0.75rem 0.5rem;
+            vertical-align: baseline;
+            height: 100%;
+            font-size: 12px;
+        }
+    }
+}
+
+// end of tables
+
+.input-search {
+    position: relative;
+
+    i {
+        position: absolute;
+        top: 25%;
+        left: 0.85rem;
+    }
+
+    input {
+        padding-left: 2.25rem;
+    }
+}
+
+.comment-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    position: relative;
+    background: #e9ecef;
+    border-top-right-radius: 5px;
+    -moz-border-top-right-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -moz-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -moz-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    width: 95%;
+}
+
+.comment-box:before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 0;
+    transform: rotate(90deg);
+    z-index: 1;
+    border: solid 15px transparent;
+    border-right-color: #e9ecef;
+}
+
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-msg, .modal-content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.25rem;
+    background: #fff;
+    width: auto;
+
+}
+
+.modal__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.dark-mode div:deep(.modal-content) {
+    border-color: #2d3748;
+    background-color: #1a202c;
+}
+
+.form-error {
+    border: 1px solid red !important;
+}
+
+@mixin round-icon($background, $color) {
+    margin-right: 0.75rem;
+    border-radius: 50%;
+    height: 50px;
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $background;
+    i {
+        transform: scale(1.5);
+        margin-left: 0.25rem;
+        color: $color;
+    }
+}
+
+.round-icon.green {
+    @include round-icon(#c5ebcf, #02a32d)
+}
+
+.round-icon.blue {
+    @include round-icon(#c9cdff, #0011ff)
+}
+
+.round-icon.yellow {
+    @include round-icon(#ede58e, #b5a600)
+}
+
+.notification-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+
+    &.unread {
+        //background-color: rgb(240,240,240);
+        border-bottom: 1px solid $color-border;
+    }
+
+    div {
+        display: flex;
+    }
+
+
+    .view {
+        text-decoration: none;
+
+        border: 1px solid $color-primary;
+
+        color: $color-primary;
+        background-color: white;
+
+        padding: 0.1rem 0.5rem;
+        border-radius: 1rem;
+        font-size: 0.85rem;
+
+        &:hover {
+            color: white;
+            background-color: $color-primary;
+        }
+    }
+}
+
+.previous-notification-label {
+    padding: 0 0.5rem;
+    margin: 1rem 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    div {
+        //border-bottom: 1px solid $color-border;
+        height: 1px;
+        background: $color-border;
+        width: 100%;
+    }
+
+    strong {
+        width: 450px;
+        text-align: center;
+        font-size: 10.5px;
+    }
+}
+
+.text-disabled {
+    color: $text-disabled;
+}
+
+.accomodation-check-input:checked {
+    background-color: $color-primary;
+}
+
+.accomodation-check-input:disabled {
+    pointer-events: none;
+    opacity: 1;
+}
+
+input.p-inputmask.p-inputtext.p-component.form-control {
+    padding: 0.375rem 0.75rem;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input.p-inputmask.p-inputtext.p-component.form-control:disabled {
+    opacity: 1;
+}
+
+p, h4, .h4, h5, .h5, label, .form-control:disabled {
+    color: var(--bs-secondary-color);
+}
+
+.close-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.p-fileupload-file-badge {
+    display: none;
+}
+
+.result-section {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+
+    @media (max-width: $mobile-width) {
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;    }
+}
+
+@mixin icon-container {
+    font-size: 1.5rem;
+    padding: 0 5px;
+    border-radius: 50%;
+}
+
+.icon-box {
+    cursor: pointer;
+    @include icon-container;
+
+    &:hover {
+        background-color: $color-border;
+    }
+}
+
+.icon-loading-box {
+    @include icon-container;
+}
+
+.vertical-badge {
+    div {
+        background-color: white;
+        border-radius: 50%;
+        padding: 0 10px;
+        i {
+            color: $color-primary;
+        }
+    }
+}
+
+.span.p-inputnumber.p-component.p-inputwrapper.p-inputwrapper-filled.form-control.p-0 {
+    border-color: blue;
+}
+
+.floating-button {
+    position: absolute;
+    bottom: 20px;
+    right: 35px;
+    float: left;
+    background-color: white;
+    border: 1px solid $color-border;
+    padding: 8px;
+    border-radius: 0.25rem;
+    @include std-shadow;
+}
+
+.te-card-border {
+    border-width: 1px;
+    border-color: var(--bs-border-color);
+    border-left-style: solid;
+    border-top-style: hidden;
+
+    @media (max-width: $tablet-width) {
+        border-top-style: solid;
+        border-left-style: hidden;
+    }
+}
+
+
+

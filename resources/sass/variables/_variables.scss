@@ -1,0 +1,39 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$color-primary: #069c63;
+$color-border: rgb(199,200,201);
+$color-body: rgb(249,249,249);
+
+// Texts
+$text-secondary: #6c757d;
+$text-disabled: rgb(190,190,190);
+
+// Device Breakpoints
+$mobile-width: 768px;
+$tablet-width: 1024px;
+$desktop-width: 1200px;
+
+*::placeholder {
+    color: lighten($text-secondary, 25%);
+    opacity: 1;
+}
+
+// Mixins
+@mixin std-spacing {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+@mixin std-shadow {
+    box-shadow: 0.5px 0.5px 10px $color-border;
+}
+
+@import 'bootstrapOverride', 'vCalendarOverride', 'tailwindOverride';

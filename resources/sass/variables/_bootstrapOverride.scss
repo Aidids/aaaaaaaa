@@ -1,0 +1,65 @@
+p, h4, h5, label, .form-control:disabled{
+    color: $text-secondary;
+}
+
+p, h5 {
+    margin-bottom: 0;
+}
+
+h4, h5 {
+    letter-spacing: 0.05rem;
+}
+
+.badge-desb {
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+    background-color: $color-primary!important;
+    letter-spacing: 0.025rem;
+    color: white;
+    font-size: 0.85rem;
+}
+
+.card {
+    padding: 1.5rem 1rem;
+    margin-bottom: 1rem;
+    border-color: $color-body;
+    @include std-shadow;
+    &.notification {
+        padding: 0;
+    }
+}
+
+.color-primary {
+    color: $color-primary;
+}
+
+.bg-primary {
+    background-color: $color-primary!important;
+}
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem #c2e9d8!important;
+}
+.page-link {
+    color: $color-primary;
+    &:hover {
+        color: $color-primary;
+    }
+    &:focus {
+        box-shadow: unset;
+        background-color: $color-primary;
+        color: white;
+    }
+}
+.p-dropdown.p-disabled, .form-control:disabled {
+    background: #f6f6f6 !important;
+}
+
+.border-xl-start {
+    border-left: 1px solid $color-border;
+
+    @media (max-width: 1200px) {
+        border-left: none;
+    }
+}
+
+
